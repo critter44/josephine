@@ -1,12 +1,12 @@
 {
   "data": {
-    "id": "1138848110735527936",
-    "name": "echo",
+    "id": "1479625596425474302",
+    "name": "help",
     "options": [
       {
-        "name": "message",
+        "name": "topic",
         "type": 3,
-        "value": "this is a test message"
+        "value": ""
       }
     ],
     "type": 1

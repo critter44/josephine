@@ -1,9 +1,20 @@
 import requests
 import yaml
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
-TOKEN = "INSERT_DISCORD_TOKEN_HERE"
-APPLICATION_ID = "INSERT_APPLICATION_ID_HERE"
+TOKEN = os.getenv("TOKEN")
+APPLICATION_ID = os.getenv("APPLICATION_ID")
+
+if not TOKEN:
+    raise RunTimeError("Missing bot token.  Either set it in your environment variables or add it to the .env file")
+if not APPLICATION_ID:
+    raise RunTimeError("Missing application ID.  Either set it in your environment variables or add it to the .env file")
+
+
 URL = f"https://discord.com/api/v9/applications/{APPLICATION_ID}/commands"
 
 
