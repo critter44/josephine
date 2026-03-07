@@ -1,61 +1,67 @@
-# Discord Bot on AWS Lambda
+# Josephine
 
-This repo is an example of how to run a Discord bot on AWS Lambda. It uses [Discord Interactions Endpoint](https://discord.com/developers/docs/interactions/application-commands).
+This is a re-implementation of an old Discord bot that my friend group was using to play Vampire: The Masquerade 5th Edition. It used to be a daemonized python process that would behave like a normal user, and had all the limitations you'd expect from that.  Now it's a REST API running on AWS Lambda and using proper slash commands.  There's still a lot to do, but it can roll dice for you at least. 
 
-The app is built with [Flask](https://flask.palletsprojects.com/) to create a HTTP server.
-The server is hosted on AWS Lambda Docker Container using [AWS CDK](https://aws.amazon.com/cdk/).
+### Commands (all working, after a fashion)
 
-Once you've replaced updated all the tokens and keys, you can deploy the bot to AWS Lambda with the CDK. You'll then get an API endpoint like `https://xxxxx.execute-api.us-east-1.amazonaws.com/prod/`.
+- name: rouse
+  description: Perform a rouse check.
 
-You can then update the Discord application's interactions endpoint to point to that URL on your [Discord Developer Portal](https://discord.com/developers/applications), and interact with the bot in your Discord server (after you've added it to the server).
+- name: roll
+  description: Roll the bones.
+  options:
+    - name: dice
+      description: The dice to roll, in the format Xd[hX] (e.g. 3d, 5dh2).
+      required: yes
 
-### Registering the Commands
+- name: register
+  description: Introduce yourself to Josephine.  She'll remember your character's name and address you by it.
+  options:
+    - name: charname
+      description: The character name to register.
+      required: yes
 
-Before you can use the bot, you'll need to register the commands with Discord.
+- name: unregister
+  description: Ask Josephine to forget your character.
 
-Modify/update the `discord_commands.yaml` file to add your own commands. Also install the dependencies in `requirements.txt` if you haven't already.
+- name: icon
+  description: Set a discord emoji to show up next to your character's name when you use commands.
+  options:
+    - name: message
+      description: The icon to use.  Make sure to include the : on either side of the emoji name (e.g. :crystal_ball:).
+      required: yes
 
-```sh
-pip install -r commands/requirements.txt
-```
+- name: crit
+  description: Set a discord emoji to show up next to your character's name when you roll a critical success.
+  options:
+    - name: message
+      description: "The icon to use.  Make sure to include the : on either side of the emoji name (e.g. :crystal_ball:)."
+      required: yes
 
-Then update the API key and application ID in `register_commands.py` to match your own. Then run the `register_commands.py` script in the `commands` directory.
+- name: reset
+  description: Reset your nickname, icon, and emoji to the hardcoded defaults.
 
-```sh
-cd commands
-python register_commands.py
-```
+- name: remember
+  description: Ask Josephine to remember something for you.
+  options:
+    - name: message
+      description: The message to remember.
+      required: yes
 
-### Testing Locally
+- name: recall
+  description: Ask Josephine to recall what she remembered for you.
 
-Send a request to the Flask app this way. Put a sample request (which you can get by logging the JSON in Lambda). PUt it in `test_request.json`.
+- name: help
+  description: Print help text for this bot's commands.
+  options:
+    - name: topic
+      description: That which befuddles you.
+      required: no
 
-Start up the bot as a Flask app.
 
-```sh
-python src/app/main.py
-```
+### To-do
+Implement persistent storage via a database.  This is currently running in a docker container as a Lambda function, and loses all state when that times out.  
 
-Then send the request to the Flask app.
 
-```sh
-curl -X POST -H "Content-Type: application/json" -d @test_request.json http://127.0.0.1:5000/
-```
 
-But this won't work with the `@verify_key_decorator`, because the request won't have a token that works with the public key.
 
-So you'll need to comment out the decorator to test locally or update the example request with a valid token from your Lambda logs.
-
-### Deploying to AWS Lambda
-
-Bootstrap the CDK if you haven't already.
-
-```sh
-cdk bootstrap
-```
-
-Then you can run this to deploy it (make sure your AWS CLI is set up first).
-
-```sh
-cdk deploy
-```
