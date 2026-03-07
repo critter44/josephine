@@ -5,7 +5,7 @@ This is a re-implementation of an old Discord bot that my friend group was using
 ### Commands (all working, after a fashion)
 
 - name: rouse
- - description: Perform a rouse check.
+  - description: Perform a rouse check.
 
 - name: roll
   - description: Roll the bones.
@@ -22,41 +22,41 @@ This is a re-implementation of an old Discord bot that my friend group was using
      -  required: yes
 
 - name: unregister
-  description: Ask Josephine to forget your character.
+  - description: Ask Josephine to forget your character.
 
 - name: icon
-  description: Set a discord emoji to show up next to your character's name when you use commands.
-  options:
+  - description: Set a discord emoji to show up next to your character's name when you use commands.
+  - options:
     - name: message
-      description: The icon to use.  Make sure to include the : on either side of the emoji name (e.g. :crystal_ball:).
-      required: yes
+     -  description: The icon to use.  Make sure to include the : on either side of the emoji name (e.g. :crystal_ball:).
+     -  required: yes
 
 - name: crit
-  description: Set a discord emoji to show up next to your character's name when you roll a critical success.
-  options:
+  - description: Set a discord emoji to show up next to your character's name when you roll a critical success.
+  - options:
     - name: message
-      description: "The icon to use.  Make sure to include the : on either side of the emoji name (e.g. :crystal_ball:)."
-      required: yes
+     -  description: "The icon to use.  Make sure to include the : on either side of the emoji name (e.g. :crystal_ball:)."
+     -  required: yes
 
 - name: reset
-  description: Reset your nickname, icon, and emoji to the hardcoded defaults.
+  - description: Reset your nickname, icon, and emoji to the hardcoded defaults.
 
 - name: remember
-  description: Ask Josephine to remember something for you.
-  options:
+  - description: Ask Josephine to remember something for you.
+  - options:
     - name: message
-      description: The message to remember.
-      required: yes
+     -  description: The message to remember.
+     -  required: yes
 
 - name: recall
-  description: Ask Josephine to recall what she remembered for you.
+  - description: Ask Josephine to recall what she remembered for you.
 
 - name: help
-  description: Print help text for this bot's commands.
-  options:
+  - description: Print help text for this bot's commands.
+  - options:
     - name: topic
-      description: That which befuddles you.
-      required: no
+     -  description: That which befuddles you.
+     -  required: no
 
 
 ### To-do
