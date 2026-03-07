@@ -5,21 +5,21 @@ This is a re-implementation of an old Discord bot that my friend group was using
 ### Commands (all working, after a fashion)
 
 - name: rouse
-  description: Perform a rouse check.
+ - description: Perform a rouse check.
 
 - name: roll
-  description: Roll the bones.
-  options:
+  - description: Roll the bones.
+  - options:
     - name: dice
-      description: The dice to roll, in the format Xd[hX] (e.g. 3d, 5dh2).
-      required: yes
+     -  description: The dice to roll, in the format Xd[hX] (e.g. 3d, 5dh2).
+     -  required: yes
 
 - name: register
-  description: Introduce yourself to Josephine.  She'll remember your character's name and address you by it.
-  options:
+  - description: Introduce yourself to Josephine.  She'll remember your character's name and address you by it.
+  - options:
     - name: charname
-      description: The character name to register.
-      required: yes
+     -  description: The character name to register.
+     -  required: yes
 
 - name: unregister
   description: Ask Josephine to forget your character.
