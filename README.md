@@ -1,6 +1,6 @@
 # Josephine
 
-This is a re-implementation of an old Discord bot that my friend group was using to play Vampire: The Masquerade 5th Edition. It used to be a daemonized python process that would behave like a normal user, and had all the limitations you'd expect from that.  Now it's a REST API running on AWS Lambda and using proper slash commands.  There's still a lot to do, but it can roll dice for you at least. 
+This is a re-implementation of an old Discord bot that my friend group was using to play Vampire: The Masquerade 5th Edition. It used to be a daemonized python process that would behave like a normal user, and had all the limitations you'd expect from that.  Now it's a REST API running on AWS Lambda and keeping its state in DynamoDB.  It might not be the most impressive thing, but it can roll dice for you.  See this fork's parent for details on how to get it running.
 
 ### Commands (all working, after a fashion)
 
