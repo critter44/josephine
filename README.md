@@ -60,7 +60,7 @@ This is a re-implementation of an old Discord bot that my friend group was using
 
 
 ### To-do
-Implement persistent storage via a database.  This is currently running in a docker container as a Lambda function, and loses all state when that times out.  
+??  Maybe sort out which commands should be guild-specific and which should be global.
 
 
 
